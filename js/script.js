@@ -22,6 +22,7 @@ let ytPlayer = null;
 let ytPlayerReady = false;
 let isYtPlaying = false;
 let pendingPlay = false;
+let ytFadeTimer = null;
 
 // Muat YouTube IFrame API
 (function loadYouTubeAPI() {
@@ -1724,15 +1725,13 @@ s6Confetti =
 TIUP LILIN
 =========================================*/
 
-s6Candle.addEventListener(
-    "click",
-    blowSection6Candle
-);
+if (s6Candle) {
+    s6Candle.addEventListener("click", blowSection6Candle);
+}
 
-s6TapText.addEventListener(
-    "click",
-    blowSection6Candle
-);
+if (s6TapText) {
+    s6TapText.addEventListener("click", blowSection6Candle);
+}
 
 function blowSection6Candle() {
 
@@ -1740,46 +1739,38 @@ function blowSection6Candle() {
 
     s6Blown = true;
 
-    s6Flame.classList.add("out");
+    if (s6Flame) s6Flame.classList.add("out");
 
-    fadeMusicVolume(.15, 1800);
+    fadeMusicVolume(0.15, 1800);
 
-    s6Overlay.classList.add("show");
-
-    setTimeout(() => {
-
-        s6CandleArea.classList.add("s6-fade-out");
-
-    }, 4700);
+    if (s6Overlay) s6Overlay.classList.add("show");
 
     setTimeout(() => {
-
-        s6CandleArea.style.display = "none";
-
-    }, 5000);
+        if (s6CandleArea) s6CandleArea.classList.add("s6-fade-out");
+    }, 4000);
 
     setTimeout(() => {
+        if (s6CandleArea) s6CandleArea.style.display = "none";
+    }, 4500);
 
-        s6Overlay.classList.remove("show");
-
-        s6Flash.classList.add("show");
+    setTimeout(() => {
+        if (s6Overlay) s6Overlay.classList.remove("show");
+        if (s6Flash) s6Flash.classList.add("show");
 
         fadeMusicVolume(1, 1800);
 
-        s6Confetti.launch();
+        if (s6Confetti) {
+            s6Confetti.resize();
+            s6Confetti.launch();
+        }
+    }, 4800);
 
+    setTimeout(() => {
+        if (s6Flash) s6Flash.classList.remove("show");
+    }, 5200);
+
+    setTimeout(() => {
+        if (s6Ending) s6Ending.classList.add("show");
     }, 5300);
-
-    setTimeout(() => {
-
-        s6Flash.classList.remove("show");
-
-    }, 5700);
-
-    setTimeout(() => {
-
-        s6Ending.classList.add("show");
-
-    }, 5900);
 
 }
