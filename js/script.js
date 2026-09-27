@@ -13,7 +13,7 @@ MUSIC (YOUTUBE BACKGROUND MUSIC)
 =========================================*/
 
 // Masukkan YouTube Video ID di sini (contoh: dari https://www.youtube.com/watch?v=0zjf3BDlRLw -> ID adalah '0zjf3BDlRLw')
-const YOUTUBE_VIDEO_ID = "0zjf3BDlRLw"; // ID YouTube kamu
+const YOUTUBE_VIDEO_ID = "pxis4fQVV-4"; // ID YouTube kamu
 
 const musicControl = document.getElementById("musicControl");
 const musicIcon = document.getElementById("musicIcon");
