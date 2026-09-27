@@ -76,7 +76,7 @@ function onPlayerReady(event) {
     try {
         ytPlayer.unMute();
         ytPlayer.setVolume(100);
-    } catch (e) {}
+    } catch (e) { }
 
     if (pendingPlay) {
         pendingPlay = false;
@@ -95,7 +95,7 @@ function onPlayerStateChange(event) {
             try {
                 ytPlayer.seekTo(0);
                 ytPlayer.playVideo();
-            } catch (e) {}
+            } catch (e) { }
         }
     }
 }
@@ -132,7 +132,7 @@ function pauseMusic() {
         ytPlayer.pauseVideo();
         isYtPlaying = false;
         updateMusicControl();
-    } catch (e) {}
+    } catch (e) { }
 }
 
 /*=========================================
@@ -184,7 +184,7 @@ function fadeMusicVolume(target, duration) {
     let start = 0;
     try {
         start = ytPlayer.getVolume() || 0;
-    } catch (e) {}
+    } catch (e) { }
 
     const fps = 30;
     const interval = 1000 / fps;
@@ -196,12 +196,12 @@ function fadeMusicVolume(target, duration) {
         const currentVol = Math.round(start + (target - start) * (frame / total));
         try {
             ytPlayer.setVolume(Math.min(100, Math.max(0, currentVol)));
-        } catch (e) {}
+        } catch (e) { }
 
         if (frame >= total) {
             try {
                 ytPlayer.setVolume(target);
-            } catch (e) {}
+            } catch (e) { }
             clearInterval(ytFadeTimer);
             ytFadeTimer = null;
         }
@@ -560,7 +560,7 @@ const bubbleSteps = [
     "Denger suara musik gak di dalem? 👀💖",
     "Dikit lagiii, ayo ketuk terus! 😆🔥",
     "SIAP-SIAP... 3.. 2.. 1.. 🚀🎉",
-    "YAAAY! SELAMAT ULANG TAHUN SHERLYN! 🎂🎉💖"
+    "YAAAY! SELAMAT ULANG TAHUN Sayang! 🎂🎉💖"
 ];
 
 const emojiSteps = ["🎁", "🎁", "🎁", "🎁", "🎁", "🎉"];
@@ -671,7 +671,7 @@ function handleGiftTap(e) {
         if (ytPlayer && typeof ytPlayer.unMute === "function") {
             ytPlayer.unMute();
         }
-    } catch (err) {}
+    } catch (err) { }
 
     for (let i = 0; i < 5; i++) {
         setTimeout(() => {
