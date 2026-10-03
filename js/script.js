@@ -568,7 +568,7 @@ const bubbleSteps = [
     "Denger suara musik gak di dalem? 👀💖",
     "Dikit lagiii, ayo ketuk terus! 😆🔥",
     "SIAP-SIAP... 3.. 2.. 1.. 🚀🎉",
-    "YAAAY! SELAMAT ULANG TAHUN Sayang! 🎂🎉💖"
+    "YAAAY! HAPPY ANNIVERSARY 1 MONTH SAYANG! 🎂🎉💖"
 ];
 
 const emojiSteps = ["🎁", "🎁", "🎁", "🎁", "🎁", "🎉"];
