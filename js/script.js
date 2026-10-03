@@ -13,7 +13,9 @@ MUSIC (YOUTUBE BACKGROUND MUSIC)
 =========================================*/
 
 // Masukkan YouTube Video ID di sini (contoh: dari https://www.youtube.com/watch?v=0zjf3BDlRLw -> ID adalah '0zjf3BDlRLw')
-const YOUTUBE_VIDEO_ID = "pxis4fQVV-4"; // ID YouTube kamu
+const YOUTUBE_VIDEO_ID = "ZnOAK04tJhc"; // ID YouTube kamu
+
+const YOUTUBE_START_TIME = 130; // 2:10 (130 detik)
 
 const musicControl = document.getElementById("musicControl");
 const musicIcon = document.getElementById("musicIcon");
@@ -56,6 +58,7 @@ function initYouTubePlayer() {
             fs: 0,
             loop: 1,
             playlist: YOUTUBE_VIDEO_ID,
+            start: YOUTUBE_START_TIME,
             modestbranding: 1,
             rel: 0,
             playsinline: 1,
@@ -77,6 +80,7 @@ function onPlayerReady(event) {
     try {
         ytPlayer.unMute();
         ytPlayer.setVolume(100);
+        ytPlayer.seekTo(YOUTUBE_START_TIME, true);
     } catch (e) { }
 
     if (pendingPlay) {
@@ -94,7 +98,7 @@ function onPlayerStateChange(event) {
         updateMusicControl();
         if (event.data === YT.PlayerState.ENDED) {
             try {
-                ytPlayer.seekTo(0);
+                ytPlayer.seekTo(YOUTUBE_START_TIME, true);
                 ytPlayer.playVideo();
             } catch (e) { }
         }
@@ -114,6 +118,9 @@ function playMusic() {
     try {
         ytPlayer.unMute();
         ytPlayer.setVolume(100);
+        if (ytPlayer.getCurrentTime && ytPlayer.getCurrentTime() < YOUTUBE_START_TIME) {
+            ytPlayer.seekTo(YOUTUBE_START_TIME, true);
+        }
         ytPlayer.playVideo();
         isYtPlaying = true;
         updateMusicControl();
